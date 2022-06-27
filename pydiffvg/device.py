@@ -8,7 +8,7 @@ device = torch.device('cuda') if use_gpu else torch.device('cpu')
 def set_use_gpu(v):
     global use_gpu
     global device
-    use_gpu = v
+    use_gpu = False if force_cpu else v
     if not use_gpu:
         device = torch.device('cpu')
 
