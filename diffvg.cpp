@@ -1592,7 +1592,7 @@ void render(std::shared_ptr<Scene> scene,
             morton_codes
         }, num_samples, scene->use_gpu);
         if (scene->use_gpu) {
-            thrust::sort_by_key(thrust::device, morton_codes, morton_codes + num_samples, boundary_ids);
+            thrust::sort_by_key(morton_codes, morton_codes + num_samples, boundary_ids);
         } else {
             // Don't need to sort for CPU, we are not using SIMD hardware anyway.
             // thrust::sort_by_key(thrust::host, morton_codes, morton_codes + num_samples, boundary_ids);
