@@ -1,7 +1,7 @@
 import torch
 import os
 
-force_cpu = os.environ.get("DIFFVG_FORCE_CPU", False)
+force_cpu = os.environ.get("DIFFVG_FORCE_CPU", "0") == "1"
 use_gpu = if force_cpu  False else torch.cuda.is_available()
 device = torch.device('cuda') if use_gpu else torch.device('cpu')
 
